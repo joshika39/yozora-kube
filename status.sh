@@ -18,14 +18,6 @@ then
     exit 1
 fi
 
-if ! systemctl is-active --quiet kubelet
-then
-    echo "Error: kubelet is not running"
-    echo " -> start with: sudo systemctl start kubelet"
-    xclip -sel clip <<< "sudo systemctl start kubelet"
-    exit 1
-fi
-
 if ! command -v kubectl &> /dev/null
 then
     echo "Error: kubectl could not be found"
@@ -35,3 +27,11 @@ fi
 
 kubelet --version
 kubectl version
+
+if ! systemctl is-enabled --quiet kubelet
+then
+    echo "Warning: kubelet is not enabled"
+    echo "Note: kubelet is not set to start on boot"
+    echo " -> enable with: sudo systemctl enable kubelet"
+    xclip -sel clip <<< "sudo systemctl enable kubelet"
+fi
