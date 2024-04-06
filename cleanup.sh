@@ -1,6 +1,6 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
-(( EUID != 0 )) && exec sudo -- "$0" "$@"
+(( EUID != 0 )) && exec sudo -E -- "$0" "$@"
 
 [[ -d /etc/kubernetes ]] && rm -rf /etc/kubernetes
 [[ -d /etc/cni ]] && rm -rf /etc/cni
