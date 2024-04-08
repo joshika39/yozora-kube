@@ -14,3 +14,10 @@ This is a simple script collection to manage Kubernetes on Arch Linux.
 # Query the ports used by Kubernetes
 ./ports.sh
 ```
+
+### Dependencies
+
+- `kubectl`
+- `kubeadm`
+- `kubelet`
+- `haproxy`
